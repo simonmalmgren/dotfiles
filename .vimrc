@@ -1,4 +1,17 @@
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+Plug 'rking/ag.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'bling/vim-airline'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-commentary'
+Plug 'vitalk/vim-lesscss'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'tpope/vim-surround'
+
+call plug#end()
 
 set nocompatible
 
