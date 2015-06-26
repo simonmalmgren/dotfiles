@@ -1,8 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'rking/ag.vim'
+Plug 'epmatsw/ag.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'taiansu/nerdtree-ag'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
 Plug 'altercation/vim-colors-solarized'
