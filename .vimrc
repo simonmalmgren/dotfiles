@@ -11,6 +11,8 @@ Plug 'tpope/vim-commentary'
 Plug 'vitalk/vim-lesscss'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-surround'
+Plug 'pangloss/vim-javascript'
+
 
 call plug#end()
 
