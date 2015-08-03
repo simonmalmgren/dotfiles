@@ -12,6 +12,7 @@ Plug 'vitalk/vim-lesscss'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-fugitive'
 
 
 call plug#end()
@@ -42,6 +43,10 @@ set noswapfile
 set nobackup
 set nowb
 
+" set backupdir=~/.vim/backup//
+" set directory=~/.vim/swap//
+" set undodir=~/.vim/undo//
+
 " ================ Indentation ======================
 
 set autoindent
@@ -69,6 +74,7 @@ set nofoldenable        "dont fold by default
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set statusline+=%{fugitive#statusline()}
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
