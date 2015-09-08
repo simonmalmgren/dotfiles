@@ -6,7 +6,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'taiansu/nerdtree-ag'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
-Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'tpope/vim-commentary'
 Plug 'vitalk/vim-lesscss'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -21,7 +21,7 @@ set nocompatible
 
 syntax enable
 set background=light
-colorscheme solarized
+colorscheme Tomorrow-Night-Eighties
 
 filetype plugin indent on
 
