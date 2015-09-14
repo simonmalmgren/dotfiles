@@ -6,12 +6,14 @@ Plug 'scrooloose/nerdtree'
 Plug 'taiansu/nerdtree-ag'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
+Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'tpope/vim-commentary'
 Plug 'vitalk/vim-lesscss'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 
 
@@ -33,6 +35,8 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
+set mouse=a                     "Allow the use of mouse in terminal
+set clipboard=unnamed           "Use clipboard on terminal
 
 set hidden
 syntax on
