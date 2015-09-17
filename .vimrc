@@ -6,7 +6,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'taiansu/nerdtree-ag'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
-Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'tpope/vim-commentary'
 Plug 'vitalk/vim-lesscss'
@@ -15,6 +14,7 @@ Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
+Plug 'mattn/emmet-vim'
 
 
 call plug#end()
