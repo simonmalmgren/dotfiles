@@ -16,7 +16,6 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 
-
 call plug#end()
 
 set nocompatible
@@ -67,6 +66,20 @@ set list listchars=tab:\ \ ,trail:·
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
+" ================ Misc =============================
+
+" Frequent mispellings
+command! W w
+command! Wqall wqall
+command! WQall wqall
+command! Q q
+command! Qall qall
+
+" Indent with tab
+nmap <S-TAB> <<
+nmap <TAB> >>
+
+
 " ================ Folds ============================
 
 set foldmethod=indent   "fold based on indent
@@ -86,7 +99,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_html_checkers = ['jshint']
+let g:syntastic_less_checkers = ['lessc']
 
 " ====== airline fonts
 let g:airline_powerline_fonts = 1
