@@ -1,0 +1,10 @@
+*.dic
+*.json
+*.pdf
+*.svg
+*.min.css
+*.min.js
+*min.js
+*.min.js.map
+*.min.map
+*.pack.js

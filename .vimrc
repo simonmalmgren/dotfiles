@@ -86,7 +86,7 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
-" ================ syntastic ========================
+" ================ Syntastic ========================
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -112,3 +112,11 @@ let g:airline_symbols.space = "\ua0"
 set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 
 let g:Powerline_symbols = 'fancy'
+
+" ================ CtrlP & Ag ========================
+
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|)$|[\/]node_modules$'
