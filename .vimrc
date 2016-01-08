@@ -79,6 +79,8 @@ command! Qall qall
 nmap <S-TAB> <<
 nmap <TAB> >>
 
+" Add dash to keywords for certain filetypes
+au Filetype css,less,html,htmldjango set iskeyword+=-
 
 " ================ Folds ============================
 
