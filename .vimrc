@@ -6,7 +6,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'taiansu/nerdtree-ag'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
-Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-commentary'
 Plug 'vitalk/vim-lesscss'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -21,8 +21,8 @@ call plug#end()
 set nocompatible
 
 syntax enable
-set background=light
-colorscheme Tomorrow-Night-Eighties
+set background=dark
+colo seoul256
 
 filetype plugin indent on
 
