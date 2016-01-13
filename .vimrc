@@ -105,6 +105,8 @@ let g:syntastic_less_checkers = ['lessc']
 
 " ====== airline fonts
 let g:airline_powerline_fonts = 1
+" ====== airline theme
+let g:airline_theme = "tomorrow"
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}

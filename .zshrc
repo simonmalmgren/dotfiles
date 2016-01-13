@@ -4,9 +4,11 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="amuse"
 plugins=(git, osx, brew)
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
+# User configuration
 
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export MANPATH="/usr/local/man:$MANPATH"
+export PATH=/Users/solsson/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -22,6 +24,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias g="git"
 alias gs="git status -sb"
-alias gl="git log"
-alias gp="git pull"
-alias gcm="git checkout master"
+alias ctags="`brew --prefix`/bin/ctags"
+alias ctg="git ls-files | grep -v .min.js | ctags -L - --languages=python,javascript"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
