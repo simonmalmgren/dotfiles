@@ -24,6 +24,11 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias g="git"
 alias gs="git status -sb"
+alias gl="git log"
+alias gp="git pull"
+alias gcm="git checkout master"
+alias fix_finder="rm ~/Library/Preferences/com.apple.finder.plist&&killall Finder"
+alias japaleno="git reset HEAD --hard"
 alias ctags="`brew --prefix`/bin/ctags"
 alias ctg="git ls-files | grep -v .min.js | ctags -L - --languages=python,javascript"
 
