@@ -2,20 +2,22 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'epmatsw/ag.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'taiansu/nerdtree-ag'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-commentary'
 Plug 'vitalk/vim-lesscss'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'groenewege/vim-less'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
+Plug 'jceb/vim-orgmode'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-speeddating'
+Plug 'milkypostman/vim-togglelist'
 
 call plug#end()
 
@@ -68,6 +70,19 @@ set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
 " ================ Misc =============================
+" Use , as leader
+let mapleader=','
+let maplocalleader=','
+
+" Always show status bar
+set laststatus=2
+
+" Move between buffers
+map gn :bn<cr>
+map gp :bp<cr>
+
+" Toggle tagbar 
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 " Frequent mispellings
 command! W w
@@ -79,6 +94,11 @@ command! Qall qall
 " Indent with tab
 nmap <S-TAB> <<
 nmap <TAB> >>
+
+" Toggle quickfix and location list
+nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
+nmap <script> <silent> <leader>f :lclose<CR>
 
 " Add dash to keywords for certain filetypes
 au Filetype css,less,html,htmldjango set iskeyword+=-
@@ -101,13 +121,17 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_less_checkers = ['lessc']
 
 " ====== airline fonts
 let g:airline_powerline_fonts = 1
 " ====== airline theme
 let g:airline_theme = "tomorrow"
+let g:airline_extensions = ['branch', 'tabline']
+
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#tabline#show_tab_nr = 1
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
