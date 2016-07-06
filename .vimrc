@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'epmatsw/ag.vim'
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
 Plug 'junegunn/seoul256.vim'
@@ -18,6 +18,9 @@ Plug 'jceb/vim-orgmode'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-speeddating'
 Plug 'milkypostman/vim-togglelist'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'lambdatoast/elm.vim'
 
 call plug#end()
 
@@ -94,6 +97,7 @@ command! Qall qall
 " Indent with tab
 nmap <S-TAB> <<
 nmap <TAB> >>
+nmap <c-p> :FZF<CR>
 
 " Toggle quickfix and location list
 nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
@@ -144,8 +148,8 @@ let g:Powerline_symbols = 'fancy'
 
 " ================ CtrlP & Ag ========================
 
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+" if executable('ag')
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" endif
 
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|)$|[\/]node_modules$'
+" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|)$|[\/]node_modules$'
