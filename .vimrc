@@ -21,6 +21,8 @@ Plug 'milkypostman/vim-togglelist'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lambdatoast/elm.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -153,3 +155,9 @@ let g:Powerline_symbols = 'fancy'
 " endif
 
 " let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|)$|[\/]node_modules$'
+
+" Rainbow parantheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
