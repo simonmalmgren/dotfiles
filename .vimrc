@@ -1,9 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'epmatsw/ag.vim'
-" Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-commentary'
 Plug 'vitalk/vim-lesscss'
@@ -54,10 +54,6 @@ set noswapfile
 set nobackup
 set nowb
 
-" set backupdir=~/.vim/backup//
-" set directory=~/.vim/swap//
-" set undodir=~/.vim/undo//
-
 " ================ Indentation ======================
 
 set autoindent
@@ -75,6 +71,7 @@ set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
 " ================ Misc =============================
+
 " Use , as leader
 let mapleader=','
 let maplocalleader=','
@@ -97,14 +94,15 @@ command! Q q
 command! Qall qall
 
 " Indent with tab
-nmap <S-TAB> <<
 nmap <TAB> >>
+
+" Launch FZF with CTRL P
 nmap <c-p> :FZF<CR>
 
 " Toggle quickfix and location list
 nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
-nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
-nmap <script> <silent> <leader>f :lclose<CR>
+nmap <script> <silent> <leader>k :call ToggleQuickfixList()<CR>
+nmap <script> <silent> <leader>q :bdel<CR>
 
 " Add dash to keywords for certain filetypes
 au Filetype css,less,html,htmldjango set iskeyword+=-
@@ -115,20 +113,19 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
-" ================ Syntastic ========================
+" ================ Statusline & Linting ========================
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline+=%{fugitive#statusline()}
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{ALEGetStatusLine()}
+" set statusline+=%*
+" set statusline+=%{fugitive#statusline()}
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:ale_linters = {
+\   'javascript': ['jshint'],
+\}
 
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_less_checkers = ['lessc']
+let g:ale_sign_column_always = 1
 
 " ====== airline fonts
 let g:airline_powerline_fonts = 1
