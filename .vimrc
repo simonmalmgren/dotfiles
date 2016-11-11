@@ -7,13 +7,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-commentary'
 Plug 'vitalk/vim-lesscss'
-Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'groenewege/vim-less'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
-Plug 'mattn/emmet-vim'
 Plug 'jceb/vim-orgmode'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-speeddating'
@@ -21,11 +18,10 @@ Plug 'milkypostman/vim-togglelist'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lambdatoast/elm.vim'
-Plug 'kien/rainbow_parentheses.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'wikitopian/hardmode'
 
 call plug#end()
-
 set nocompatible
 
 syntax enable
@@ -100,6 +96,7 @@ nmap <TAB> >>
 nmap <c-p> :FZF<CR>
 
 " Toggle quickfix and location list
+let g:toggle_list_no_mappings = 1
 nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
 nmap <script> <silent> <leader>k :call ToggleQuickfixList()<CR>
 nmap <script> <silent> <leader>q :bdel<CR>
@@ -144,17 +141,3 @@ let g:airline_symbols.space = "\ua0"
 set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 
 let g:Powerline_symbols = 'fancy'
-
-" ================ CtrlP & Ag ========================
-
-" if executable('ag')
-"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-" endif
-
-" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|)$|[\/]node_modules$'
-
-" Rainbow parantheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
