@@ -2,8 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'epmatsw/ag.vim'
 Plug 'w0rp/ale'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'schickling/vim-bufonly'
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-commentary'
 Plug 'vitalk/vim-lesscss'
@@ -20,6 +19,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'lambdatoast/elm.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'wikitopian/hardmode'
+Plug 'ap/vim-buftabline'
 
 call plug#end()
 set nocompatible
@@ -112,32 +112,24 @@ set nofoldenable        "dont fold by default
 
 " ================ Statusline & Linting ========================
 
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%{ALEGetStatusLine()}
-" set statusline+=%*
-" set statusline+=%{fugitive#statusline()}
-
 let g:ale_linters = {
 \   'javascript': ['jshint'],
 \}
 
+" Always show ale column
 let g:ale_sign_column_always = 1
+" Show modified buffers
+let g:buftabline_indicators = 1
 
-" ====== airline fonts
-let g:airline_powerline_fonts = 1
-" ====== airline theme
-let g:airline_theme = "tomorrow"
-let g:airline_extensions = ['branch', 'tabline']
-
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#tabline#show_tab_nr = 1
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-
-set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
-
-let g:Powerline_symbols = 'fancy'
+function! LintStatus()
+  let status = ALEGetStatusLine()
+  if status != ''
+    return '['.status.']'
+  else
+    return ''
+endfunction
+set statusline=
+set statusline +=%1*\ \%{toupper(mode())}\ \%*
+set statusline +=%2*%f%*
+set statusline +=%2*%=\ \[%{fugitive#head()}]\ \%*
+set statusline +=%2*%{LintStatus()}\ \%*
