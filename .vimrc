@@ -18,7 +18,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lambdatoast/elm.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'wikitopian/hardmode'
 Plug 'ap/vim-buftabline'
 
 call plug#end()
@@ -95,8 +94,11 @@ nmap <TAB> >>
 " Launch FZF with CTRL P
 nmap <c-p> :FZF<CR>
 
+
 " Toggle quickfix and location list
 let g:toggle_list_no_mappings = 1
+
+nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
 nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
 nmap <script> <silent> <leader>k :call ToggleQuickfixList()<CR>
 nmap <script> <silent> <leader>q :bdel<CR>
@@ -113,21 +115,24 @@ set nofoldenable        "dont fold by default
 " ================ Statusline & Linting ========================
 
 let g:ale_linters = {
-\   'javascript': ['jshint'],
+\   'javascript': ['eslint'],
 \}
-
 " Always show ale column
 let g:ale_sign_column_always = 1
 " Show modified buffers
 let g:buftabline_indicators = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 1
 
 function! LintStatus()
   let status = ALEGetStatusLine()
+
   if status != ''
     return '['.status.']'
   else
     return ''
 endfunction
+
 set statusline=
 set statusline +=%1*\ \%{toupper(mode())}\ \%*
 set statusline +=%2*%f%*
