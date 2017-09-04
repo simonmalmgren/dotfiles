@@ -4,6 +4,7 @@ Plug 'epmatsw/ag.vim'
 Plug 'w0rp/ale'
 Plug 'schickling/vim-bufonly'
 Plug 'junegunn/seoul256.vim'
+Plug 'liuchengxu/space-vim-dark'
 Plug 'tpope/vim-commentary'
 Plug 'vitalk/vim-lesscss'
 Plug 'pangloss/vim-javascript'
@@ -24,8 +25,8 @@ call plug#end()
 set nocompatible
 
 syntax enable
-set background=dark
-colo seoul256
+colorscheme space-vim-dark
+hi Comment cterm=italic
 
 filetype plugin indent on
 
@@ -115,7 +116,8 @@ set nofoldenable        "dont fold by default
 " ================ Statusline & Linting ========================
 
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['jshint'],
+\   'ruby': ['rubocop'],
 \}
 " Always show ale column
 let g:ale_sign_column_always = 1
