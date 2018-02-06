@@ -97,7 +97,6 @@ au Filetype css,less,html,htmldjango set iskeyword+=-
 let g:jsx_ext_required = 0
 
 " ===== EasyMotion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
