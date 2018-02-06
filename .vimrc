@@ -4,7 +4,6 @@ Plug 'epmatsw/ag.vim'
 Plug 'w0rp/ale'
 Plug 'schickling/vim-bufonly'
 Plug 'junegunn/seoul256.vim'
-Plug 'liuchengxu/space-vim-dark'
 Plug 'tpope/vim-commentary'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -14,15 +13,14 @@ Plug 'jceb/vim-orgmode'
 Plug 'milkypostman/vim-togglelist'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'ap/vim-buftabline'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 set nocompatible
 
 syntax enable
-colorscheme space-vim-dark
-hi Comment cterm=italic
+colorscheme seoul256
 
 filetype plugin indent on
 
@@ -40,13 +38,13 @@ set clipboard=unnamed           "Use clipboard on terminal
 set hidden
 syntax on
 
-" ================ Turn Off Swap Files ==============
+" ===== Swap Files
 
 set noswapfile
 set nobackup
 set nowb
 
-" ================ Indentation ======================
+" ===== Indentation
 
 set autoindent
 set smartindent
@@ -56,17 +54,13 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
+" ===== MISC
+
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
-
-" ================ Misc =============================
-
-" Use , as leader
-let mapleader=','
-let maplocalleader=','
 
 " Always show status bar
 set laststatus=2
@@ -74,9 +68,6 @@ set laststatus=2
 " Move between buffers
 map gn :bn<cr>
 map gp :bp<cr>
-
-" Toggle tagbar 
-nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 " Frequent mispellings
 command! W w
@@ -91,7 +82,6 @@ nmap <TAB> >>
 " Launch FZF with CTRL P
 nmap <c-p> :FZF<CR>
 
-
 " Toggle quickfix and location list
 let g:toggle_list_no_mappings = 1
 
@@ -103,20 +93,37 @@ nmap <script> <silent> <leader>q :bdel<CR>
 " Add dash to keywords for certain filetypes
 au Filetype css,less,html,htmldjango set iskeyword+=-
 
-" ================ Folds ============================
+" Allow JSX syntax in non .jsx files
+let g:jsx_ext_required = 0
 
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+" ===== EasyMotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
-" ================ Statusline & Linting ========================
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" ===== Folds
+
+set nofoldenable
+
+" ===== Statusline & Linting
 
 let g:ale_linters = {
-\   'javascript': ['jshint'],
+\   'javascript': ['eslint'],
 \   'ruby': ['rubocop'],
 \}
+
 " Always show ale column
 let g:ale_sign_column_always = 1
+
 " Show modified buffers
 let g:buftabline_indicators = 1
 let g:ale_lint_on_save = 1
