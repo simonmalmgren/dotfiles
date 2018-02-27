@@ -6,7 +6,7 @@ Plug 'schickling/vim-bufonly'
 Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-commentary'
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'jceb/vim-orgmode'
@@ -20,7 +20,7 @@ call plug#end()
 set nocompatible
 
 syntax enable
-colorscheme seoul256
+colo seoul256-light
 
 filetype plugin indent on
 
@@ -94,20 +94,8 @@ nmap <script> <silent> <leader>q :bdel<CR>
 au Filetype css,less,html,htmldjango set iskeyword+=-
 
 " Allow JSX syntax in non .jsx files
-let g:jsx_ext_required = 0
-
-" ===== EasyMotion
-
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
-
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+" let g:jsx_ext_required = 0
+let g:vim_jsx_pretty_colorful_config = 1
 
 " ===== Folds
 
@@ -119,6 +107,8 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ruby': ['rubocop'],
 \}
+
+let g:ale_sign_error = '😭'
 
 " Always show ale column
 let g:ale_sign_column_always = 1
