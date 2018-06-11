@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'epmatsw/ag.vim'
+Plug 'jremmen/vim-ripgrep'
 Plug 'w0rp/ale'
 Plug 'schickling/vim-bufonly'
 Plug 'junegunn/seoul256.vim'
@@ -15,6 +15,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ap/vim-buftabline'
 Plug 'easymotion/vim-easymotion'
+Plug 'prettier/vim-prettier'
 
 call plug#end()
 set nocompatible
@@ -102,6 +103,10 @@ let g:vim_jsx_pretty_colorful_config = 1
 set nofoldenable
 
 " ===== Statusline & Linting
+
+" Run prettier on save, async
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
