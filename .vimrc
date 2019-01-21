@@ -16,9 +16,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'prettier/vim-prettier'
 Plug 'joukevandermaas/vim-ember-hbs'
-Plug 'iloginow/vim-stylus'
-Plug 'lifepillar/vim-mucomplete'
 Plug 'ember-template-lint/ember-template-lint'
+Plug 'iloginow/vim-stylus'
 
 call plug#end()
 set nocompatible
@@ -71,9 +70,6 @@ set completeopt+=noselect
 " ==== Comments
 autocmd FileType stylus setlocal commentstring=//\ %s
 
-" ==== ctags
-" let g:auto_ctags = 1
-
 " ===== MISC
 
 " Display tabs and trailing spaces visually
@@ -122,10 +118,6 @@ let g:vim_jsx_pretty_colorful_config = 1
 set nofoldenable
 
 " ===== Statusline & Linting
-
-" Run prettier on save, async
-" let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
