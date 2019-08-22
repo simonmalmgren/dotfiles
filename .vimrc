@@ -1,9 +1,8 @@
-call plug#begin('~/.vim/plugged')
+ call plug#begin('~/.vim/plugged')
 
-Plug 'w0rp/ale'
-Plug 'soramugi/auto-ctags.vim'
+Plug 'vim-syntastic/syntastic'
 Plug 'schickling/vim-bufonly'
-Plug 'junegunn/seoul256.vim'
+Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-commentary'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -13,18 +12,21 @@ Plug 'jceb/vim-orgmode'
 Plug 'milkypostman/vim-togglelist'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'prettier/vim-prettier'
-Plug 'joukevandermaas/vim-ember-hbs'
-Plug 'ember-template-lint/ember-template-lint'
+Plug '/usr/local/opt/fzf'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'iloginow/vim-stylus'
+Plug 'ember-template-lint/ember-template-lint'
+Plug 'digitaltoad/vim-pug'
+" snippetz
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 set nocompatible
 
 syntax enable
-let g:seoul256_background = 237
-colo seoul256
+colo base16-ia-light
+syntax on
 
 filetype plugin indent on
 
@@ -45,6 +47,7 @@ syntax on
 
 set incsearch
 set nohlsearch
+" set hlsearch
 
 " ===== Swap Files
 
@@ -69,6 +72,18 @@ set completeopt+=noselect
 
 " ==== Comments
 autocmd FileType stylus setlocal commentstring=//\ %s
+
+" ==== ctags
+" let g:auto_ctags = 1
+
+" ===== SNIPPETZ
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " ===== MISC
 
@@ -117,36 +132,17 @@ let g:vim_jsx_pretty_colorful_config = 1
 
 set nofoldenable
 
-" ===== Statusline & Linting
-
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
-
-let g:ale_sign_error = ':('
-let g:ale_sign_warning = ':/'
-
-" Always show ale column
-let g:ale_sign_column_always = 1
-
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 1
-
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? ':)' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 set statusline =
+set statusline+=%#warningmsg#
+set statusline+=%*
+
 set statusline +=%2*%f
 set statusline +=\ %m
 set statusline +=%1*\ %=
-set statusline +=%{LinterStatus()}
+set statusline  +=%{SyntasticStatuslineFlag()}
