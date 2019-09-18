@@ -1,9 +1,10 @@
- call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 
 Plug 'vim-syntastic/syntastic'
 Plug 'schickling/vim-bufonly'
 Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'tpope/vim-git'
