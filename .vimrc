@@ -8,6 +8,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'mbbill/undotree'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'Epitrochoid/marko-vim-syntax'
 Plug 'heavenshell/vim-prettier'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
@@ -22,12 +23,15 @@ Plug 'ember-template-lint/ember-template-lint'
 Plug 'digitaltoad/vim-pug'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'junegunn/seoul256.vim'
+Plug 'lepture/vim-jinja'
 
 call plug#end()
 set nocompatible
 
 syntax enable
-colo base16-ia-light
+colo seoul256-light
+let g:seoul256_background = 255
 syntax on
 
 filetype plugin indent on
