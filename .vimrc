@@ -60,8 +60,6 @@ command! WQall wqall
 command! Q q
 command! Qall qall
 
-" nmap <TAB> >>
-
 set directory:~/.vim/swapfiles//
 set backupdir:~/.vim/backup//
 
