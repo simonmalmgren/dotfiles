@@ -1,19 +1,43 @@
-alias g="git"
-alias gp="git pull"
-alias gs="git status -sb"
-alias gl="gcloud auth login --update-adc "
-set -U FZF_TMUX 1
-set -U EDITOR nvim
-set -x LC_ALL en_US.UTF-8
-set -x LANG en_US.UTF-8
-set -g fish_user_paths "/usr/local/opt/elasticsearch@5.6/bin" $fish_user_paths
-set -gx TERM screen-256color-bce;
-fish_add_path /opt/homebrew/sbin
-source "$HOME/.cargo/env"
+# set -g default-shell $SHELL
 
-function nvm
-  bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
-end
+set -g mouse on
 
-set -x NVM_DIR ~/.nvm
-nvm use default --silent
+set -s escape-time 0
+# set-option -sa terminal-overrides ',xterm-256color:RGB'
+set-option -sa terminal-overrides ',xterm*:Tc'
+# set-option -sa terminal-features ',kitty:RGB'
+
+setw -g mode-keys vi
+
+unbind-key -T copy-mode-vi v
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-pipe "reattach-to-user-namespace pbcopy"
+
+# Copy and cancel with enter
+unbind -T copy-mode-vi Enter
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+
+unbind-key -T copy-mode-vi Space
+unbind-key -T copy-mode-vi C-v
+bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+
+# Navigate panes with hjkl :')
+bind -r h select-pane -L
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r l select-pane -R
+
+# Clear scrollback with ctrl k
+bind -n C-k clear-history
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf
+run '~/.tmux/plugins/tpm/tpm'
