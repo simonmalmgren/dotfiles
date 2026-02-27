@@ -17,6 +17,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'andreypopp/asyncomplete-ale.vim'
+Plug 'github/copilot.vim'
 
 Plug 'prabirshrestha/asyncomplete.vim'
 if has('python3')
@@ -31,10 +32,9 @@ set nocompatible
 filetype plugin indent on
 syntax on
 
-set notermguicolors
-let g:seoul256_light_background = 256
-colo seoul256-light
-set background=light
+set termguicolors
+colo seoul256
+let g:seoul256_background = 233
 
 set number
 set mouse=a
