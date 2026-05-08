@@ -1,3 +1,6 @@
 # dotfiles
 
-Config for various tools
+macOS
+fish
+tmux
+nvim
